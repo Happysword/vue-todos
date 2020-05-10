@@ -17,6 +17,7 @@
         ref="newTodo"
       />
     </form>
+    <input type="checkbox" />
     <button
       @click="startEditing()"
       class="btn btn-outline-primary border-0 ml-2"

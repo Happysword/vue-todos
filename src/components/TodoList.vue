@@ -12,7 +12,7 @@
       <div class="col-12 col-sm-10 col-lg-6">
         <ul class="list-group">
           <todo
-            v-for="(todo, index) in todos"
+            v-for="(todo, index) in this.$store.state.todoList"
             :key="index"
             :description="todo.description"
             :completed="todo.completed"
@@ -34,24 +34,20 @@ export default {
   props: {
     listName: String
   },
-  data() {
-    return {
-      todos: [
-        { description: "Do the dishes", completed: false },
-        { description: "Take out the trash", completed: false },
-        { description: "Finish doing laundry", completed: false }
-      ]
-    };
-  },
   methods: {
     addTodo(newTodo) {
-      this.todos.push({ description: newTodo, completed: false });
+      this.$store.state.todoList.push({
+        description: newTodo,
+        completed: false
+      });
     },
     toggleTodo(todo) {
       todo.completed = !todo.completed;
     },
     deleteTodo(deletedTodo) {
-      this.todos = this.todos.filter(todo => todo !== deletedTodo);
+      this.$store.state.todoList = this.$store.state.todoList.filter(
+        todo => todo !== deletedTodo
+      );
     },
     editTodo(todo, newTodoDescription) {
       todo.description = newTodoDescription;
