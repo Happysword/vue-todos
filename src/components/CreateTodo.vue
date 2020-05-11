@@ -1,10 +1,15 @@
 <template>
-  <form class="col-12 col-sm-10 col-md-8 cl-lg-6" @submit.prevent="addTodo()">
+  <form
+    class="col-12 col-sm-10 col-md-8 cl-lg-6"
+    id="form"
+    @submit.prevent="addTodo()"
+  >
     <input
       v-model="newTodo"
       type="text"
       class="form-control"
       placeholder="Create a new to-do..."
+      id="input"
     />
   </form>
 </template>

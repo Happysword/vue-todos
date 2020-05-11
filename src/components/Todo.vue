@@ -5,6 +5,7 @@
       :class="{ completed }"
       @click="$emit('on-toggle')"
       v-if="!isEditing"
+      id="toggle-btn"
     >
       <span>{{ description }}</span>
     </button>
@@ -15,16 +16,27 @@
         v-model="newTodoDescription"
         @blur="finishEditing()"
         ref="newTodo"
+        id="input-form"
       />
     </form>
-    <input type="checkbox" @click="$emit('move-list')" :checked="check" />
+    <input
+      type="checkbox"
+      @click="$emit('move-list')"
+      :checked="check"
+      id="check-box"
+    />
     <button
       @click="startEditing()"
+      id="edit-btn"
       class="btn btn-outline-primary border-0 ml-2"
     >
       <span class="fa fa-edit"></span>
     </button>
-    <button @click="$emit('on-delete')" class="btn btn-outline-danger border-0">
+    <button
+      @click="$emit('on-delete')"
+      class="btn btn-outline-danger border-0"
+      id="delete-btn"
+    >
       <span class="fa fa-trash"></span>
     </button>
   </li>

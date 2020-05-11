@@ -54,7 +54,6 @@ export default {
     },
     editTodo(todo, newTodoDescription) {
       todo.description = newTodoDescription;
-      console.log("hey");
       this.saveToStorage(todo.description);
     },
     moveToDone(todo) {

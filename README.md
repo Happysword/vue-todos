@@ -10,6 +10,11 @@ yarn install
 yarn serve
 ```
 
+### Runs unit tests and puts coverage report in coverage/lcov-report/index.html
+```
+npx jest --coverage
+```
+
 ### Compiles and minifies for production
 ```
 yarn build
