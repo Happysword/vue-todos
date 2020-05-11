@@ -15,6 +15,7 @@
             :completed="true"
             :check="true"
             @move-list="moveToList(todo)"
+            @on-delete="deleteTodo(todo)"
           />
         </ul>
       </div>
@@ -27,10 +28,13 @@ import Todo from "./Todo.vue";
 export default {
   components: { Todo },
   methods: {
-    moveToList(newtodo) {
+    deleteTodo(deletedTodo) {
       this.$store.state.doneList = this.$store.state.doneList.filter(
-        todo => todo !== newtodo
+        todo => todo !== deletedTodo
       );
+    },
+    moveToList(newtodo) {
+      this.deleteTodo(newtodo);
       this.$store.state.todoList.push(newtodo);
     }
   }

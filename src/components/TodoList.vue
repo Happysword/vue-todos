@@ -42,6 +42,7 @@ export default {
         description: newTodo,
         completed: false
       });
+      this.saveToStorage(newTodo);
     },
     toggleTodo(todo) {
       todo.completed = !todo.completed;
@@ -53,10 +54,18 @@ export default {
     },
     editTodo(todo, newTodoDescription) {
       todo.description = newTodoDescription;
+      console.log("hey");
+      this.saveToStorage(todo.description);
     },
     moveToDone(todo) {
       this.deleteTodo(todo);
       this.$store.state.doneList.push(todo);
+    },
+    saveToStorage(todo) {
+      let existing = localStorage.getItem("ToDOs");
+      existing = existing ? existing.split(",") : [];
+      if (existing[existing.length - 1] != todo) existing.push(todo);
+      localStorage.setItem("ToDOs", existing.toString());
     }
   },
   components: { Todo, CreateTodo }
