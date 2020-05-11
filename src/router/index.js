@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import TodoList from "../components/TodoList.vue";
+import DoneList from "../components/DoneList.vue";
 
 Vue.use(VueRouter);
 
@@ -14,8 +15,7 @@ const routes = [
   {
     path: "/done",
     name: "done",
-    component: TodoList,
-    props: { listName: "Done" }
+    component: DoneList
   }
 ];
 

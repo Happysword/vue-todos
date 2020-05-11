@@ -15,10 +15,12 @@
             v-for="(todo, index) in this.$store.state.todoList"
             :key="index"
             :description="todo.description"
-            :completed="todo.completed"
+            :completed="false"
+            :check="false"
             @on-toggle="toggleTodo(todo)"
             @on-delete="deleteTodo(todo)"
             @on-edit="editTodo(todo, $event)"
+            @move-list="moveToDone(todo)"
           />
         </ul>
       </div>
@@ -51,6 +53,10 @@ export default {
     },
     editTodo(todo, newTodoDescription) {
       todo.description = newTodoDescription;
+    },
+    moveToDone(todo) {
+      this.deleteTodo(todo);
+      this.$store.state.doneList.push(todo);
     }
   },
   components: { Todo, CreateTodo }

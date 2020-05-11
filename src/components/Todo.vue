@@ -17,7 +17,7 @@
         ref="newTodo"
       />
     </form>
-    <input type="checkbox" />
+    <input type="checkbox" @click="$emit('move-list')" :checked="check" />
     <button
       @click="startEditing()"
       class="btn btn-outline-primary border-0 ml-2"
@@ -40,7 +40,8 @@ export default {
   },
   props: {
     description: String,
-    completed: Boolean
+    completed: Boolean,
+    check: { type: Boolean, default: false }
   },
   methods: {
     startEditing() {
